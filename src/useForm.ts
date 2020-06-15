@@ -971,9 +971,10 @@ export function useForm<
       | null,
     validationOptions?: ValidationOptions,
   ): ((ref: Element | null) => void) | void {
-    if (isWindowUndefined) {
-      return;
-    }
+    // TODO compatibility wechat app
+    // if (isWindowUndefined) {
+    //   return;
+    // }
 
     if (isString(refOrValidationOptions)) {
       registerFieldsRef({ name: refOrValidationOptions }, validationOptions);
