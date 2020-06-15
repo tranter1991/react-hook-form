@@ -9,7 +9,7 @@ export default getConfig({
   tsconfig: './tsconfig.ie11.json',
   output: [
     {
-      file: `dist/${pkg.name}.ie11.js`,
+      file: `dist/${pkg.displayName}.ie11.js`,
       format: 'cjs',
       exports: 'named',
     },
@@ -17,24 +17,21 @@ export default getConfig({
   plugins: [
     resolve(),
     commonjs({
-      include: 'node_modules/**'
+      include: 'node_modules/**',
     }),
     babel({
-      extensions: [
-        ...DEFAULT_EXTENSIONS,
-        '.ts',
-        '.tsx'
-      ],
+      extensions: [...DEFAULT_EXTENSIONS, '.ts', '.tsx'],
       exclude: 'node_modules/**',
       babelrc: false,
       runtimeHelpers: true,
       plugins: [
-        ['@babel/plugin-transform-runtime',
+        [
+          '@babel/plugin-transform-runtime',
           {
             corejs: 3,
-          }
-        ]
+          },
+        ],
       ],
-    })
-  ]
+    }),
+  ],
 });
